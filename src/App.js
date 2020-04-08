@@ -5,7 +5,6 @@ import Footer from "./components/Footer";
 
 const App = () => {
     return (
-        // header and footer are child components of BrowserRouter
         <BrowserRouter>
             <Header/>
             <Footer/>

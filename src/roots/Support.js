@@ -2,7 +2,7 @@ import React from "react";
 
 // Functional Component
 const Support = () => {
-    return(
+    return (
         <div>Support.js</div>
     )
 };

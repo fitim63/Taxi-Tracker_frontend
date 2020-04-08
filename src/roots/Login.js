@@ -41,7 +41,7 @@ export default class Login extends React.Component {
                                 We'll never share your email with anyone else.
                             </Form.Text>
                         </Form.Group>
-                        <Button className="btn btn-success m-2"  type="submit" onClick={() => this.handleLogin()}>
+                        <Button className="btn btn-success m-2" type="submit" onClick={() => this.handleLogin()}>
                             Login
                         </Button>
                     </Form>
