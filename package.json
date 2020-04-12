@@ -9,15 +9,17 @@
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",
-    "react-leaflet": "^2.6.1",
     "leaflet": "^1.6.0",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-dom": "^16.13.0",
     "react-facebook-login": "^4.1.1",
     "react-google-login": "^5.1.1",
+    "react-leaflet": "^2.6.1",
     "react-router-dom": "^5.1.2",
-    "react-scripts": "3.4.0"
+    "react-scripts": "3.4.0",
+    "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,6 +43,7 @@
     ]
   },
   "devDependencies": {
+    "react-redux": "^7.2.0",
     "webpack-node-externals": "^1.7.2"
   }
 }
