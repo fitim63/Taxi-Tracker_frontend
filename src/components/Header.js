@@ -13,17 +13,17 @@ import home from "../roots/Home";
 import login from "../roots/Login";
 import support from "../roots/Support";
 import logo from "../assets/vehicleTrackerLogo.png";
-import "../style.css";
+import "./style.css";
 
 const Header = () => {
   return (
     <div>
-      <Navbar bg="dark" variant="dark" expand="lg">
+      <Navbar bg="bg header-black" variant="dark" expand="lg">
         <NavbarBrand as={Link} to="/">
           <img
             src={logo}
-            width="50"
-            height="50"
+            width="75"
+            height="75"
             className="d-inline-block align-top"
             alt="React logo"
           />{" "}

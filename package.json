@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "axios": "^0.19.2",
+    "bcryptjs": "^2.4.3",
     "bootstrap": "^4.4.1",
     "react-leaflet": "^2.6.1",
     "leaflet": "^1.6.0",
@@ -37,5 +39,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "webpack-node-externals": "^1.7.2"
   }
 }
