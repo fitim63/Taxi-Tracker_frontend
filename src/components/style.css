@@ -2,6 +2,12 @@
     background-color: black;
 }
 
+.login-label {
+    text-align: center;
+}
+
+
+/*Login fade css*/
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -9,6 +15,7 @@
     animation-duration: 1s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
+    margin-top: 135px;
 }
 
 @-webkit-keyframes fadeInDown {
