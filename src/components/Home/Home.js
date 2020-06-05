@@ -1,5 +1,5 @@
 import React from "react";
-import MapComponent from "../components/MapComponent";
+import MapComponent from "../MapComponent/MapComponent";
 // Functional component Home, do not have state.
 const Home = () => {
     return  <MapComponent/>

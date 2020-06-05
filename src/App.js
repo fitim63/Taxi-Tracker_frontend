@@ -1,26 +1,20 @@
 import React from "react";
-import { Provider } from "react-redux";
-import store from "./store";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Header1 from "./header1.js"
+import Header from "./components/Header/Header";
+import Footer from "./components/Footer/Footer";
+import Login from "./components/Login/Login";
 
-const App = ({ children }) => {
-    return (
-
+const App = () => {
+  return (
+    <div>
         <div>
-            <Header1 />
-            {children}
+            <Header/>
+            <Footer/>
         </div>
-    );
+    </div>
+  );
 };
 
 export default App;
 
 
-{/*       <Provider store={store}>
-            <BrowserRouter>
-                <Header />
-                <Footer />
-            </BrowserRouter>
-        </Provider>*/}
+

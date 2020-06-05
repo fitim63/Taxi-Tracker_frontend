@@ -9,11 +9,12 @@ import {
   Button
 } from "react-bootstrap";
 import { Route, Link, Switch } from "react-router-dom";
-import home from "../roots/Home";
-import login from "../roots/Login";
-import support from "../roots/Support";
-import logo from "../assets/vehicleTrackerLogo.png";
-import "./style.css";
+import home from "../Home/Home";
+import login from "../Login/Login";
+import reports from "../Reports";
+import register from "../Register/Register";
+import logo from "../../assets/vehicleTrackerLogo.png";
+import "../style.css";
 
 const Header = () => {
   return (
@@ -37,8 +38,8 @@ const Header = () => {
               </Nav.Link>
             </NavItem>
             <NavItem>
-              <Nav.Link as={Link} to="/support">
-                Support
+              <Nav.Link as={Link} to="/reports">
+                Reports
               </Nav.Link>
             </NavItem>
             <NavItem>
@@ -59,8 +60,9 @@ const Header = () => {
       </Navbar>
       <Switch>
         <Route path="/" exact component={home} />
-        <Route path="/support" component={support} />
+        <Route path="/reports" component={reports} />
         <Route path="/login" component={login} />
+        <Route path="/register" component={register} />
       </Switch>
     </div>
   );
