@@ -6,13 +6,18 @@ import { reduxForm } from "redux-form";
 import { Redirect } from "react-router-dom";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Loader from "react-loader-spinner";
-import { Image } from "react-bootstrap";
+import { Button, Image } from "react-bootstrap";
 import logo from "../../assets/vehicleTrackerLogo.png";
 import LoginForm from "./LoginForm";
+import { useHistory } from "react-router-dom";
+import { FaRegSmile } from "react-icons/fa";
+import { AiOutlineUser } from "react-icons/ai";
+
 const Login = (props) => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   let onSubmitClicked = false;
+  const history = useHistory();
 
   const onSubmit = async (formProps) => {
     onSubmitClicked = true;
@@ -25,9 +30,15 @@ const Login = (props) => {
   };
 
   return (
-    <div className="row d-flex justify-content-center background-container">
-      <div className="col-md-2.5 align-self-center m-5 login-form fadeInDown">
-        <Image src={logo} className="vt-logo" />
+    <div className="row d-flex border-bottom background-container">
+      <div className="col-md-1 col-md-2 col-md-3 login-form fadeInDown">
+        <div className="form-header">
+          <h2 className="register-text">
+            Server Login Form
+            <AiOutlineUser className="align-self-center mb-1 ml-1" />
+          </h2>
+          <Image src={logo} className="vt-logo" />
+        </div>
         {(onSubmitClicked && (
           <Loader
             type="Puff"
@@ -48,6 +59,18 @@ const Login = (props) => {
             />
           ))}
         <LoginForm onSubmit={onSubmit} />
+        <Button
+          className="btn m-1 btn-success btn-block"
+          type="button"
+          onClick={() => {
+            history.push("/register");
+          }}
+        >
+          Register
+        </Button>
+        <h2 className="login-label">
+          You must login to access this app.. <FaRegSmile />
+        </h2>
       </div>
     </div>
   );

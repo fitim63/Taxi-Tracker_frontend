@@ -10,22 +10,31 @@ import {
 } from "../constants";
 import axios from "axios";
 
-export const register = () => async (dispatch, server) => {
-  await userService
-    .registerNewServer(server)
+export const register = (server) => async (dispatch) => {
+  axios({
+    method: "POST",
+    url: "http://localhost:8080/createServer",
+    data: {
+      firstName: server.firstName,
+      lastName: server.lastName,
+      username: server.username,
+      password: server.password,
+      email: server.email,
+    },
+  })
     .then((user) => {
       dispatch({
         type: REGISTER_SUCCESS,
         payload: {
-          user: server,
+          user: user,
         },
       });
     })
     .catch((err) => {
+      console.log("REGISTER_FAIL ERR: ", err);
       dispatch({
         type: REGISTER_FAIL,
       });
-      console.log("ERROR: ", err);
     });
 };
 

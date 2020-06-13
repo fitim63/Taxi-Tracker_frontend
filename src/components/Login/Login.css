@@ -3,6 +3,9 @@
 }
 
 .login-label {
+    text-align: start;
+    align-self: flex-end;
+    justify-content: flex-end;
     color: cadetblue;
     font-size: 20px;
     margin-top: 20px;
@@ -34,14 +37,6 @@
     background-size: cover;
 }
 
-
-.login-image {
-    width: 320px;
-    height: 300px;
-}
-.login-form {
-    opacity: 1;
-}
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
