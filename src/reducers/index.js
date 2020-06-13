@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
-import { locationReducer } from "./locationDetailReducer";
-import auth from "./auth";
 import { reducer as formReducer } from "redux-form";
+import authReducer from "./authReducer";
+import errorReducer from "./errorReducer";
 
 const allReducers = combineReducers({
-  vehicleLocationDetail: locationReducer,
-  auth,
-    form: formReducer,
+  form: formReducer,
+  auth: authReducer,
+  error: errorReducer,
 });
 
 export default allReducers;

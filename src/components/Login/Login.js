@@ -1,55 +1,56 @@
 import React from "react";
-import {Form, Button, Container} from "react-bootstrap";
-import './Login.css'
+import "./Login.css";
+import { login } from "../../actions";
+import { useSelector, useDispatch } from "react-redux";
+import { reduxForm } from "redux-form";
+import { Redirect } from "react-router-dom";
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
+import Loader from "react-loader-spinner";
+import { Image } from "react-bootstrap";
+import logo from "../../assets/vehicleTrackerLogo.png";
+import LoginForm from "./LoginForm";
+const Login = (props) => {
+  const dispatch = useDispatch();
+  const token = useSelector((state) => state.auth.token);
+  let onSubmitClicked = false;
 
-export default class Login extends React.Component {
+  const onSubmit = async (formProps) => {
+    onSubmitClicked = true;
+    dispatch(
+      await login({
+        username: formProps.username,
+        password: formProps.password,
+      })
+    );
+  };
 
-    // state init with empty values
-    state = {
-        username: '',
-        password: ''
-    };
+  return (
+    <div className="row d-flex justify-content-center background-container">
+      <div className="col-md-2.5 align-self-center m-5 login-form fadeInDown">
+        <Image src={logo} className="vt-logo" />
+        {(onSubmitClicked && (
+          <Loader
+            type="Puff"
+            color="#0000"
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+          />
+        )) ||
+          (!onSubmitClicked && token && (
+            <Redirect
+              to={{
+                pathname: "/home",
+                state: {
+                  from: props.location,
+                },
+              }}
+            />
+          ))}
+        <LoginForm onSubmit={onSubmit} />
+      </div>
+    </div>
+  );
+};
 
-    handleChange(event) {
-        this.setState({
-            username: event.target.value,
-        });
-    }
-    handleRegistration(event) {
-
-    }
-
-    render() {
-        return (
-            <div className="row d-flex justify-content-center fadeInDown">
-                <div className="col-md-3 m-5">
-                    <Form>
-                        <Form.Group controlId="formBasicPhoneNumber">
-                            <Container>
-                                <label className="text-center">Login</label>
-                            </Container>
-                            <Form.Control
-                                className="m-2"
-                                type="text"
-                                placeholder="username"
-                                onChange={value => this.handleChange(value)}/>
-                            <Form.Control
-                                className="m-2"
-                                type="password"
-                                placeholder="password"
-                                onChange={p => this.setState({password: p.target.value})}/>
-                        </Form.Group>
-                        <Button className="btn btn-success m-2 btn-block" type="submit" onClick={() => this.handleLogin()}>
-                            Login
-                        </Button>
-                    </Form>
-
-                    <Button className="btn btn-success m-2 btn-block" type="button" onClick={() => this.handleRegistartion()}>
-                        Register
-                    </Button>
-                </div>
-
-            </div>
-        )
-    }
-}
+export default reduxForm({ form: "login" })(Login);

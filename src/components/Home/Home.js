@@ -1,8 +1,14 @@
 import React from "react";
 import MapComponent from "../MapComponent/MapComponent";
-// Functional component Home, do not have state.
+import Header from "../Header/Header";
+
 const Home = () => {
-    return  <MapComponent/>
+  return (
+    <div>
+      <Header />
+      <MapComponent />
+    </div>
+  );
 };
 
 export default Home;

@@ -11,7 +11,7 @@ function MapComponent() {
     let position = [lat, lng];
 
     const myIcon = L.icon({
-        iconUrl: require('../../assets/icon.png'),
+        iconUrl: require('../../assets/taxi.png'),
         iconSize: [64,64],
         iconAnchor: [32, 64],
         popupAnchor: [-3, -76],
@@ -21,13 +21,11 @@ function MapComponent() {
     });
 
     const handleOnClick = (event) => {
-
         const { lat, lng } = event.latlng;
         console.log(lat);
         console.log(lng);
         setMarkerLat(lat);
         setMarkerLng(lng)
-
     };
 
     return (

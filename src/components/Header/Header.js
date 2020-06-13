@@ -6,13 +6,10 @@ import {
   NavItem,
   Form,
   FormControl,
-  Button
+  Button,
 } from "react-bootstrap";
 import { Route, Link, Switch } from "react-router-dom";
-import home from "../Home/Home";
-import login from "../Login/Login";
 import reports from "../Reports";
-import register from "../Register/Register";
 import logo from "../../assets/vehicleTrackerLogo.png";
 import "../style.css";
 
@@ -42,11 +39,6 @@ const Header = () => {
                 Reports
               </Nav.Link>
             </NavItem>
-            <NavItem>
-              <Nav.Link as={Link} to="/login">
-                Login
-              </Nav.Link>
-            </NavItem>
           </Nav>
           <Form inline>
             <FormControl
@@ -59,10 +51,7 @@ const Header = () => {
         </Navbar.Collapse>
       </Navbar>
       <Switch>
-        <Route path="/" exact component={home} />
         <Route path="/reports" component={reports} />
-        <Route path="/login" component={login} />
-        <Route path="/register" component={register} />
       </Switch>
     </div>
   );

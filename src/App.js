@@ -1,20 +1,18 @@
 import React from "react";
-import Header from "./components/Header/Header";
-import Footer from "./components/Footer/Footer";
 import Login from "./components/Login/Login";
+import home from "./components/Home/Home";
+import { Route } from "react-router-dom";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import Welcome from "./components/Welcome/Welcome";
 
 const App = () => {
   return (
-    <div>
-        <div>
-            <Header/>
-            <Footer/>
-        </div>
+    <div className="loginContainer">
+      <Route exact path="/" component={Welcome} />
+      <Route path="/login" component={Login} />
+      <ProtectedRoute path="/home" component={home} />
     </div>
   );
 };
 
 export default App;
-
-
-
