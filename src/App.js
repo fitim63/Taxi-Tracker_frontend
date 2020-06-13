@@ -1,21 +1,18 @@
 import React from "react";
-import { Provider } from "react-redux";
-import store from "./store";
-import { BrowserRouter } from "react-router-dom";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+import Login from "./components/Login/Login";
+import home from "./components/Home/Home";
+import { Route } from "react-router-dom";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import Welcome from "./components/Welcome/Welcome";
 
 const App = () => {
-    return (
-        <Provider store={store}>
-            <BrowserRouter>
-                <Header />
-                <Footer />
-            </BrowserRouter>
-        </Provider>
-    );
+  return (
+    <div className="loginContainer">
+      <Route exact path="/" component={Welcome} />
+      <Route path="/login" component={Login} />
+      <ProtectedRoute path="/home" component={home} />
+    </div>
+  );
 };
 
 export default App;
-
-

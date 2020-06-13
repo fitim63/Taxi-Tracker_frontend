@@ -6,14 +6,12 @@ import {
   NavItem,
   Form,
   FormControl,
-  Button
+  Button,
 } from "react-bootstrap";
 import { Route, Link, Switch } from "react-router-dom";
-import home from "../roots/Home";
-import login from "../roots/Login";
-import support from "../roots/Support";
-import logo from "../assets/vehicleTrackerLogo.png";
-import "./style.css";
+import reports from "../Reports";
+import logo from "../../assets/vehicleTrackerLogo.png";
+import "../style.css";
 
 const Header = () => {
   return (
@@ -37,13 +35,8 @@ const Header = () => {
               </Nav.Link>
             </NavItem>
             <NavItem>
-              <Nav.Link as={Link} to="/support">
-                Support
-              </Nav.Link>
-            </NavItem>
-            <NavItem>
-              <Nav.Link as={Link} to="/login">
-                Login
+              <Nav.Link as={Link} to="/reports">
+                Reports
               </Nav.Link>
             </NavItem>
           </Nav>
@@ -58,9 +51,7 @@ const Header = () => {
         </Navbar.Collapse>
       </Navbar>
       <Switch>
-        <Route path="/" exact component={home} />
-        <Route path="/support" component={support} />
-        <Route path="/login" component={login} />
+        <Route path="/reports" component={reports} />
       </Switch>
     </div>
   );
