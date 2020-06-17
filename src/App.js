@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import Welcome from "./components/Welcome/Welcome";
 import Register from "./components/Register/Register";
+
 const App = () => {
   return (
     <div className="loginContainer">

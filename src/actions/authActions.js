@@ -48,12 +48,12 @@ export const login = (user) => async (dispatch, getState) => {
       password: user.password,
     },
   })
-    .then((token) => {
-      localStorage.setItem("token", token.data);
+    .then((response) => {
+      localStorage.setItem("token", response.data.token);
       dispatch({
         type: LOGIN_SUCCESS,
         payload: {
-          token: token.data,
+          token: response.data.token,
           isAuthenticated: true,
           isLoading: false,
           user: user,
