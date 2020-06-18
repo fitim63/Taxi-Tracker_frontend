@@ -26,7 +26,7 @@ const Register = () => {
     history.push("/login");
   };
   return (
-    <div className="row d-flex justify-content-center background-container">
+    <div className="d-flex justify-content background-container">
       <div className="col-md-3 align-self-center  login-form fadeInDown">
         <div className="form-header">
           <h2 className="register-text">
