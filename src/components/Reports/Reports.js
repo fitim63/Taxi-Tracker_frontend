@@ -1,48 +1,95 @@
-import React from "react";
-import {Navbar, NavbarBrand} from "react-bootstrap";
+import React, {useState, useEffect} from "react";
+import {Button, Form, FormControl, Nav, Navbar, NavbarBrand, NavItem} from "react-bootstrap";
+import reports from "./reports.css";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import logo from "../assets/vehicleTrackerLogo.png";
+import logo from "../../assets/vehicleTrackerLogo.png";
+import ListGroup from "./ListGroup";
+import createSpacing from "@material-ui/core/styles/createSpacing";
+import Header from "../Header/Header";
+import {AiFillCar} from "react-icons";
+import {reduxForm} from "redux-form";
+import {fetchDriverReports} from "../../actions";
+import {useSelector, useDispatch} from "react-redux";
+import {connect} from "react-redux";
 
-const Reports = (props) => {
-    return (
-        <div>
-            <Navbar bg="bg navbar-custom" variant="dark" expand="lg">
-                Reports
-            </Navbar>
+const Reports = () => {
 
-            <div className="col-2">
-                <ul className="list-group">
-                    <li className="list-group-item">Cras justo odio</li>
-                    <li className="list-group-item">Dapibus ac facilisis in</li>
-                    <li className="list-group-item">Morbi leo risus</li>
-                    <li className="list-group-item">Porta ac consectetur ac</li>
-                    <li className="list-group-item">Vestibulum at eros</li>
-                </ul>
-            </div>
+    // const [driver_reports, setDriver_reports] = useState([]);
 
-            <div className="col-2">
+    const reports = useSelector(state => state.reports.reports);
+    const dispatch = useDispatch();
+    const [types, setTypes] = useState([
+        {_id: "", name: "Vehicle Reports"},
+        {_id: "", name: "Driver Reports"},
+        {_id: "", name: "Monitor Reports"},
+        {_id: "", name: "Daily Driver Reports"}
+    ]);
+    const [selectedType, setSelectedType] = useState(null);
+
+    useEffect(async () => {
+            dispatch(await fetchDriverReports());
+        console.log("reports", reports);
+    }, []);
+
+    const handleSelectedType = (type) => {
+        setSelectedType(type);
+    };
+
+    const renderDriverTable = () => {
+        return (
+            <div className="col-9">
                 <table className="table">
                     <thead className="thead-dark">
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th scope="col">id</th>
+                        <th scope="col">Created At</th>
+                        <th scope="col">Average Speed</th>
+                        <th scope="col">Updated At</th>
+                        <th scope="col">Driver id</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Larry</td>
-                        <td>the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
+                    {reports.length === 0 ?
+                        <tr align="center">
+                            <td colSpan="5">No reports available.</td>
+                        </tr> :
+                        reports.map((report) => (
+                            <tr key={report.id}>
+                                <td>{report.id}</td>
+                                <td>{report.createdAt}</td>
+                                <td>{report.driverAverageSpeed}</td>
+                                <td>{report.updatedAt}</td>
+                                <td>{report.driver.id}</td>
+                            </tr>
+                        ))
+                    }
                     </tbody>
                 </table>
             </div>
+        );
+    };
+
+    return (
+        <div>
+            <Header/>
+            <div className="table-list-custom">
+                <div className="col-3">
+                    <ListGroup
+                        items={types}
+                        selectedItem={selectedType}
+                        onItemSelect={handleSelectedType}
+                    />
+                </div>
+            </div>
+            <div>
+                {renderDriverTable()}
+            </div>
         </div>
-    )
+    );
 };
 
+
+
 export default Reports;
+

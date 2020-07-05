@@ -9,14 +9,15 @@ import {
   Button,
 } from "react-bootstrap";
 import { Route, Link, Switch } from "react-router-dom";
-import reports from "../Reports";
+import reports from "../Reports/Reports";
 import logo from "../../assets/vehicleTrackerLogo.png";
-import "../style.css";
+// import "../style.css";
+import "./Header.css";
 
 const Header = () => {
   return (
     <div>
-      <Navbar bg="bg header-black" variant="dark" expand="lg">
+      <Navbar bg="bg navbar-custom" variant="dark" expand="lg">
         <NavbarBrand as={Link} to="/">
           <img
             src={logo}
@@ -50,9 +51,9 @@ const Header = () => {
           </Form>
         </Navbar.Collapse>
       </Navbar>
-      <Switch>
-        <Route path="/reports" component={reports} />
-      </Switch>
+      {/*<Switch>*/}
+      {/*  <Route path="/Reports" component={reports} />*/}
+      {/*</Switch>*/}
     </div>
   );
 };
