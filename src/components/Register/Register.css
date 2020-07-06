@@ -114,9 +114,14 @@
 }
 
 .errorMessage {
-    font-size: 0.65em;
     color: red;
     margin-left: 3%;
+    text-align: center;
+    margin-right: 2%;
+    font-size: 12px;
+    margin-top: 10px;
+    font-family: 'Yu Gothic Medium';
+    font-weight: bold;
 }
 
 .error {
