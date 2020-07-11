@@ -8,7 +8,7 @@ const allReducers = combineReducers({
   form: formReducer,
   auth: authReducer,
   err: errorReducer,
-  reports: reportReducer
+  reps: reportReducer
 });
 
 export default allReducers;

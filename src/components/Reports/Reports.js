@@ -1,23 +1,19 @@
 import React, {useState, useEffect} from "react";
-import {Button, Form, FormControl, Nav, Navbar, NavbarBrand, NavItem} from "react-bootstrap";
 import reports from "./reports.css";
 import axios from "axios";
 import {Link} from "react-router-dom";
-import logo from "../../assets/vehicleTrackerLogo.png";
 import ListGroup from "./ListGroup";
 import createSpacing from "@material-ui/core/styles/createSpacing";
 import Header from "../Header/Header";
 import {AiFillCar} from "react-icons";
-import {reduxForm} from "redux-form";
 import {fetchDriverReports} from "../../actions";
 import {useSelector, useDispatch} from "react-redux";
-import {connect} from "react-redux";
 
 const Reports = () => {
 
     // const [driver_reports, setDriver_reports] = useState([]);
 
-    const reports = useSelector(state => state.reports.reports);
+    const reports = useSelector(state => state.reps.reports);
     const dispatch = useDispatch();
     const [types, setTypes] = useState([
         {_id: "", name: "Vehicle Reports"},
@@ -28,8 +24,8 @@ const Reports = () => {
     const [selectedType, setSelectedType] = useState(null);
 
     useEffect(async () => {
-            dispatch(await fetchDriverReports());
-        console.log("reports", reports);
+        dispatch(await fetchDriverReports());
+        console.log("useEffect -- reports", reports);
     }, []);
 
     const handleSelectedType = (type) => {
@@ -38,6 +34,7 @@ const Reports = () => {
 
     const renderDriverTable = () => {
         return (
+
             <div className="col-9">
                 <table className="table">
                     <thead className="thead-dark">
@@ -88,7 +85,6 @@ const Reports = () => {
         </div>
     );
 };
-
 
 
 export default Reports;
