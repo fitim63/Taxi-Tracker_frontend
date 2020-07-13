@@ -1,70 +1,43 @@
 import React, {useState, useEffect} from "react";
-import reports from "./reports.css";
-import axios from "axios";
-import {Link} from "react-router-dom";
 import ListGroup from "./ListGroup";
-import createSpacing from "@material-ui/core/styles/createSpacing";
 import Header from "../Header/Header";
-import {AiFillCar} from "react-icons";
-import {fetchDriverReports} from "../../actions";
 import {useSelector, useDispatch} from "react-redux";
+import ReportsDataComponent from "./ReportsDataComponent";
+import {fetchVehicleReports, fetchDriverReports} from "../../actions";
 
 const Reports = () => {
 
-    // const [driver_reports, setDriver_reports] = useState([]);
-
-    const reports = useSelector(state => state.reps.reports);
-    const dispatch = useDispatch();
     const [types, setTypes] = useState([
-        {_id: "", name: "Vehicle Reports"},
-        {_id: "", name: "Driver Reports"},
-        {_id: "", name: "Monitor Reports"},
-        {_id: "", name: "Daily Driver Reports"}
+        {id: "1", name: "Vehicle Reports"},
+        {id: "2", name: "Driver Reports"},
+        {id: "3", name: "Monitor Reports"},
+        {id: "4", name: "Daily Driver Reports"}
     ]);
     const [selectedType, setSelectedType] = useState(null);
+    const vehicleReports = useSelector(state => state.vehicleReps.vehicleReports);
+    const driverReports = useSelector(state => state.reps.reports);
+    const [data, setData] = useState([]);
 
     useEffect(async () => {
-        dispatch(await fetchDriverReports());
-        console.log("useEffect -- reports", reports);
+        if (data.length === 0 && vehicleReports.length === 0) {
+            setData(vehicleReports);
+            console.log("Init Report", data);
+
+        }
     }, []);
 
-    const handleSelectedType = (type) => {
-        setSelectedType(type);
-    };
+    const dispatch = useDispatch();
 
-    const renderDriverTable = () => {
-        return (
-
-            <div className="col-9">
-                <table className="table">
-                    <thead className="thead-dark">
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Created At</th>
-                        <th scope="col">Average Speed</th>
-                        <th scope="col">Updated At</th>
-                        <th scope="col">Driver id</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {reports.length === 0 ?
-                        <tr align="center">
-                            <td colSpan="5">No reports available.</td>
-                        </tr> :
-                        reports.map((report) => (
-                            <tr key={report.id}>
-                                <td>{report.id}</td>
-                                <td>{report.createdAt}</td>
-                                <td>{report.driverAverageSpeed}</td>
-                                <td>{report.updatedAt}</td>
-                                <td>{report.driver.id}</td>
-                            </tr>
-                        ))
-                    }
-                    </tbody>
-                </table>
-            </div>
-        );
+    const handleSelectedType = async (type) => {
+        if (type.id === "1") {
+            dispatch(await fetchVehicleReports());
+            setSelectedType(type);
+            setData(vehicleReports);
+        } else if (type.id === "2") {
+            dispatch(await fetchDriverReports());
+            setSelectedType(type);
+            setData(driverReports);
+        }
     };
 
     return (
@@ -72,15 +45,22 @@ const Reports = () => {
             <Header/>
             <div className="table-list-custom">
                 <div className="col-3">
+                    {/*<ul className="list-group">*/}
+                    {/*    <li className="list-group-item">Vehicle Reports</li>*/}
+                    {/*    <li className="list-group-item">Driver Reports</li>*/}
+                    {/*    <li className="list-group-item">Monitor Reports</li>*/}
+                    {/*    <li className="list-group-item">Daily Driver Reports</li>*/}
+                    {/*</ul>*/}
                     <ListGroup
                         items={types}
                         selectedItem={selectedType}
-                        onItemSelect={handleSelectedType}
+                        onItemSelect={(type) => handleSelectedType(type)}
                     />
                 </div>
             </div>
             <div>
-                {renderDriverTable()}
+
+                        <ReportsDataComponent reportData={data.length === 0 ? vehicleReports : data }/>
             </div>
         </div>
     );

@@ -24,14 +24,11 @@ export const fetchDriverReports = () => {
                 .then(res =>  dispatch({
                     type: FETCH_REPORTS_SUCCESS,
                     payload: {
-                        token: res.data.token,
-                        isAuthenticated: true,
                         pending: false,
                         reports: res.data
                     }
-                },console.log("SUCCESS ----", res.data)))
+                }, console.log("driver reports success", res.data)))
                 .catch(err => {
-                    console.log("error ----", err);
                     dispatch({
                         type: FETCH_REPORTS_FAIL,
                     })

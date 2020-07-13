@@ -10,7 +10,7 @@ const ListGroup = ({
     return (
         <ul className="list-group">
             {items.map(item => (
-                <a href="#"
+                <a
                     onClick={() => onItemSelect(item)}
                     key={item[valueProperty]}
                     className={
@@ -27,7 +27,7 @@ const ListGroup = ({
 
 ListGroup.defaultProps = {
     textProperty: "name",
-    valueProperty: "_id"
+    valueProperty: "id"
 };
 
 
