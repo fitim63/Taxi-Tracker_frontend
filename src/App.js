@@ -5,6 +5,7 @@ import { Route } from "react-router-dom";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import Welcome from "./components/Welcome/Welcome";
 import Register from "./components/Register/Register";
+import Reports from "./components/Reports/Reports";
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Route exact path="/" component={Welcome} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
+      <ProtectedRoute path="/reports" component={Reports} />
       <ProtectedRoute path="/home" component={home} />
     </div>
   );

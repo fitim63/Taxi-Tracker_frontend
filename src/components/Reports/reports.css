@@ -1,0 +1,9 @@
+.table-list-custom{
+    display: flex;
+    margin-top: 20px;
+}
+.col-9{
+    display: flex;
+    float: right;
+    margin-top: -192px;
+}
