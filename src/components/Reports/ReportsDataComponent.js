@@ -1,47 +1,107 @@
-import {useDispatch, useSelector} from "react-redux";
-import React, {useEffect} from "react";
-import {fetchVehicleReports} from "../../actions";
-import {Link} from "react-router-dom";
+import React from "react";
+import "./reports.css";
+import moment from "moment-timezone";
 
-const ReportsDataComponent = (reportData) => {
-
-    const reports = useSelector(state => state.vehicleReps.vehicleReports);
-    const dispatch = useDispatch();
-    useEffect(() => {
-        console.log("ReportsDataComponent: ", reportData);
-        }
-    );
-
+const renderReports = (reportData, type, reportStatusPending) => {
+  if (reportData && reportData.length > 0 && !reportStatusPending) {
+    return reportData.map((r) => {
+      if (type === 0 && r.vehicles) {
+        return (
+          <tr key={r.id}>
+            <td>{r.id}</td>
+            <td>{r.vehicles.name}</td>
+            <td>{r.distanceTraveledInKilometers}</td>
+            <td>{r.totalFuelSpentUntilNow}</td>
+          </tr>
+        );
+      } else if (type === 1) {
+        return (
+          <tr key={r.id}>
+            <td>{r.id}</td>
+            <td>{moment(r.driverWorkStartTime).format("MM/DD/YYYY")}</td>
+            <td>{moment(r.driverWorkEndTime).format("MM/DD/YYYY")}</td>
+            <td>{r.is_working}</td>
+          </tr>
+        );
+      } else if (type === 2) {
+        return (
+          <tr key={r.id}>
+            <td>{r.id}</td>
+            <td>{r.firstName}</td>
+            <td>{r.lastName}</td>
+            <td>{r.uuid}</td>
+            <td>{r.age}</td>
+          </tr>
+        );
+      } else if (type === 3) {
+        return (
+          <tr key={r.id}>
+            <td>{r.id}</td>
+            <td>{r.firstName}</td>
+            <td>{r.lastName}</td>
+            <td>{r.email}</td>
+            <td>{r.username}</td>
+            <td>{r.uuid}</td>
+          </tr>
+        );
+      }
+      return null;
+    });
+  } else if (!reportData) {
     return (
-        <div className="col-9">
-            <table className="table">
-                <thead className="thead-dark">
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Vehicle Id</th>
-                    <th scope="col">Distance Traveled</th>
-                    <th scope="col">Total Fuel Spent</th>
-                </tr>
-                </thead>
-                <tbody>
-                { reportData === null ? (
-                    <tr align="center">
-                        <td colSpan="5">No reports available.</td>
-                    </tr>
-                ): (<div> data</div>
-                   /* reportData.map((data) => (
-                        <tr key={data.id}>
-                            <td>{data.id}</td>
-                            <td>{data.vehicles.id}</td>
-                            <td>{data.distanceTraveledInKilometers}</td>
-                            <td>{data.totalFuelSpentUntilNow}</td>
-                        </tr>
-                    ))*/
-                )}
-                </tbody>
-            </table>
-        </div>
+      <tr align="center">
+        <td colSpan="5">No reports available.</td>
+      </tr>
     );
+  }
+};
+
+const renderHeader = (id) => {
+  const headerTypes = [
+    {
+      id: 0,
+      head: ["Id", "Vehicle name", "Distance Traveled", "Total fuel spent"],
+    },
+    {
+      id: 1,
+      head: ["Work schedule Id", "Start Time", "End Time", "Working status"],
+    },
+    {
+      id: 2,
+      head: ["Id", "First Name", "Last Name", "Driver UUID", "Age"],
+    },
+    {
+      id: 3,
+      head: [
+        "Server Id",
+        "First Name",
+        "Last Name",
+        "Email",
+        "Username",
+        "UUID",
+      ],
+    },
+  ];
+  return headerTypes[id].head.map((value, key) => (
+    <th key={key} scope="col">
+      {value}
+    </th>
+  ));
+};
+
+const ReportsDataComponent = ({ reportData, type, reportStatusPending }) => {
+  console.log("Report Data: ", reportData);
+  console.log("Type: ", type);
+  return (
+    <div className="col-9">
+      <table className="table">
+        <thead className="thead-dark">
+          <tr>{renderHeader(type)}</tr>
+        </thead>
+        <tbody>{renderReports(reportData, type, reportStatusPending)}</tbody>
+      </table>
+    </div>
+  );
 };
 
 export default ReportsDataComponent;

@@ -1,4 +1,2 @@
 export * from "./authActions";
-export * from "./reportActions";
-export * from "./vehicleReportActions";
-export * from "./monitorReportActions";
+export * from "./getReportsAction";

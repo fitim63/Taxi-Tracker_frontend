@@ -8,13 +8,12 @@ import {
   FormControl,
   Button,
 } from "react-bootstrap";
-import { Route, Link, Switch } from "react-router-dom";
-import reports from "../Reports/Reports";
+import { Link } from "react-router-dom";
 import logo from "../../assets/vehicleTrackerLogo.png";
-// import "../style.css";
 import "./Header.css";
 
 const Header = () => {
+  const handleSearch = () => {};
   return (
     <div>
       <Navbar bg="bg navbar-custom" variant="dark" expand="lg">
@@ -31,7 +30,7 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <NavItem>
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to="/home">
                 Home
               </Nav.Link>
             </NavItem>
@@ -47,13 +46,12 @@ const Header = () => {
               placeholder="Search.."
               className="mr-sm-2"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success" onClick={handleSearch}>
+              Search
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Navbar>
-      {/*<Switch>*/}
-      {/*  <Route path="/Reports" component={reports} />*/}
-      {/*</Switch>*/}
     </div>
   );
 };
