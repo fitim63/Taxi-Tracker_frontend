@@ -1,24 +1,14 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  NavbarBrand,
-  NavItem,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
-import { Route, Link, Switch } from "react-router-dom";
-import reports from "../Reports";
+import { Navbar, Nav, NavbarBrand, NavItem } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import logo from "../../assets/vehicleTrackerLogo.png";
 import "../style.css";
-//import userDetails from "../UserDetails";
-//import vehicleAddDelete from "../VehicleAddDelete";
+import "./Header.css";
 
 const Header = () => {
   return (
     <div>
-      <Navbar bg="bg header-black" variant="dark" expand="lg">
+      <Navbar bg="bg navbar-custom" variant="dark" expand="lg">
         <NavbarBrand as={Link} to="/">
           <img
             src={logo}
@@ -32,7 +22,7 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <NavItem>
-              <Nav.Link as={Link} to="/">
+              <Nav.Link as={Link} to="/home">
                 Home
               </Nav.Link>
             </NavItem>
@@ -52,19 +42,8 @@ const Header = () => {
               </Nav.Link>
             </NavItem>
           </Nav>
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Search.."
-              className="mr-sm-2"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Navbar>
-      <Switch>
-        <Route path="/reports" component={reports} />
-      </Switch>
     </div>
   );
 };
