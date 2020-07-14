@@ -24,10 +24,11 @@ const Login = (props) => {
     const onSubmit = async (formProps) => {
         onSubmitClicked = true;
         dispatch(
-            authLoginValidationAction(formProps.username)
+            authLoginValidationAction(formProps.username, formProps.password)
         );
         if(login){
             console.log("username error : ", error.error);
+            console.log("password error : ", error.error);
         }else {
             dispatch(
                 await login({

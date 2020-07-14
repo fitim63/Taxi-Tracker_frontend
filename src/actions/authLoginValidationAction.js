@@ -3,8 +3,8 @@ import {
     LOGIN_VALIDATION_ERROR
 } from "../constants";
 
-const handleLoginValidation = (username) => {
-    if (username) {
+const handleLoginValidation = (username, password) => {
+    if (username && password) {
         if (username.length < 3 && username.length > 0) {
             return {
                 type: LOGIN_VALIDATION_ERROR,
@@ -19,7 +19,7 @@ const handleLoginValidation = (username) => {
     }else {
         return {
             type: LOGIN_VALIDATION_ERROR,
-            payload: 'Invalid username. Minimum 3 characters required',
+            payload: 'Enter Data',
         }
     }
 }

@@ -6,8 +6,8 @@ import {
 const passRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
 const emailRegex= /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
 
-const handleRegisterValidation = (username, password, email) => {
-    if (username && password && email) {
+const handleRegisterValidation = (firstName, lastName, username, password, email) => {
+    if (firstName && lastName && username && password && email) {
         if (username.length < 3 && username.length > 0) {
             return {
                 type: REGISTER_VALIDATION_ERROR,

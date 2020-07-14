@@ -18,9 +18,11 @@ const Register = () => {
     const onSubmit = async (formProps) => {
         console.log("Props: ", formProps);
         dispatch(
-            authRegisterValidationActions(formProps.username, formProps.password, formProps.email)
+            authRegisterValidationActions(formProps.firstName, formProps.lastName, formProps.username, formProps.password, formProps.email)
         );
         if(register){
+            console.log("firstName error: ", error.error);
+            console.log("lastName error: ", error.error);
             console.log("username error: ", error.error);
             console.log("password error: ", error.error);
             console.log("email error: ", error.error);
