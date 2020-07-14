@@ -1,19 +1,10 @@
 import React from "react";
-import {
-  Navbar,
-  Nav,
-  NavbarBrand,
-  NavItem,
-  Form,
-  FormControl,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav, NavbarBrand, NavItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/vehicleTrackerLogo.png";
 import "./Header.css";
 
 const Header = () => {
-  const handleSearch = () => {};
   return (
     <div>
       <Navbar bg="bg navbar-custom" variant="dark" expand="lg">
@@ -40,16 +31,6 @@ const Header = () => {
               </Nav.Link>
             </NavItem>
           </Nav>
-          <Form inline>
-            <FormControl
-              type="text"
-              placeholder="Search.."
-              className="mr-sm-2"
-            />
-            <Button variant="outline-success" onClick={handleSearch}>
-              Search
-            </Button>
-          </Form>
         </Navbar.Collapse>
       </Navbar>
     </div>

@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import { Map, TileLayer, Marker, Popup, withLeaflet } from "react-leaflet";
 import "./Map.css";
 import L from "leaflet";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Loader from "react-loader-spinner";
+import { ReactLeafletSearch } from "react-leaflet-search";
 
 function MapComponent() {
   const [lat] = useState(52.505);
@@ -42,6 +43,7 @@ function MapComponent() {
       }
     });
   };
+  const ReactLeafletSearchComponent = withLeaflet(ReactLeafletSearch);
 
   return (
     <Map
@@ -131,6 +133,21 @@ function MapComponent() {
           </Popup>
         )}
       </Marker>
+      <ReactLeafletSearchComponent
+        className="custom-style"
+        position="topright"
+        inputPlaceholder="Search for location"
+        search={[33.100745405144245, 46.48315429687501]}
+        showMarker={true}
+        zoom={5}
+        showPopup={true}
+        closeResultsOnClick={true}
+        openSearchOnLoad={true}
+        searchBounds={[
+          [33.100745405144245, 46.48315429687501],
+          [44.55916341529184, 24.510498046875],
+        ]}
+      />
     </Map>
   );
 }
