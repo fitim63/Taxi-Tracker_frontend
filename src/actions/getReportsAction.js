@@ -13,10 +13,10 @@ export const fetchReportsPending = () => ({
 
 export const getReportsAction = (id) => async (dispatch) => {
   const reportsUrl = [
-    "http://localhost:8080/vehicle-reports",
+    "http://localhost:8080/vehicles/vehicle-reports",
     "http://localhost:8080/driver-work-schedule",
-    "http://localhost:8080/drivers",
-    "http://localhost:8080/servers",
+    "http://localhost:8080/drivers/getAll",
+    "http://localhost:8080/servers/getAll",
   ];
   dispatch(fetchReportsPending());
   await axios
