@@ -44,8 +44,7 @@ function MapComponent() {
   };
 
 
-//css i butonit
-  const buttonStyle = {backgroundColor: '#ACE894', borderEndEndRadius: '3px solid red',}
+
 
 
   return (

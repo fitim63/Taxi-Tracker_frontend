@@ -12,8 +12,11 @@ import { Route, Link, Switch } from "react-router-dom";
 import reports from "../Reports";
 import logo from "../../assets/vehicleTrackerLogo.png";
 import "../style.css";
+import {useHistory} from "react-router-dom";
 
 const Header = () => {
+
+  const history = useHistory()
   return (
     <div>
       <Navbar bg="bg header-black" variant="dark" expand="lg">
@@ -46,8 +49,19 @@ const Header = () => {
               placeholder="Search.."
               className="mr-sm-2"
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success" className='btn primary mr-3'>Search</Button>
           </Form>
+          <NavItem>
+            <Button onClick={async ()=>{
+
+              await localStorage.removeItem("token");
+              await localStorage.clear();
+              history.push('/login');
+
+            }}>
+              LogOut
+            </Button>
+          </NavItem>
         </Navbar.Collapse>
       </Navbar>
       <Switch>
