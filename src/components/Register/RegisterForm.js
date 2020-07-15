@@ -1,7 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import CustomInput from "../CustomInput";
-import { validateRegistration } from "../Login/ValidationServices";
+import { validateRegistration, warn } from "../Login/ValidationServices";
 
 const RegisterForm = (props) => {
   const { handleSubmit, onSubmit, submitting } = props;
@@ -49,6 +49,8 @@ const RegisterForm = (props) => {
   );
 };
 
-export default reduxForm({ form: "register", validate: validateRegistration })(
-  RegisterForm
-);
+export default reduxForm({
+  form: "register",
+  validate: validateRegistration,
+  warn,
+})(RegisterForm);
