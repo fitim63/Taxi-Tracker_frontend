@@ -2,6 +2,7 @@ import React from "react";
 import { Navbar, Nav, NavbarBrand, NavItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/vehicleTrackerLogo.png";
+import "../style.css";
 import "./Header.css";
 
 const Header = () => {
@@ -28,6 +29,16 @@ const Header = () => {
             <NavItem>
               <Nav.Link as={Link} to="/reports">
                 Reports
+              </Nav.Link>
+            </NavItem>
+            <NavItem>
+              <Nav.Link as={Link} to="/userDetails">
+                User Details
+              </Nav.Link>
+            </NavItem>
+            <NavItem>
+              <Nav.Link as={Link} to="/vehicleAddDelete">
+                Vehicle
               </Nav.Link>
             </NavItem>
           </Nav>

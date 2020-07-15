@@ -3,12 +3,11 @@
 }
 
 .login-label {
-    text-align: start;
-    align-self: flex-end;
-    justify-content: flex-end;
+    text-align: center;
+    margin-right: 13%;
     color: cadetblue;
-    font-size: 20px;
-    margin-top: 20px;
+    font-size: 14px;
+    margin-top: 10px;
     font-family: 'Yu Gothic Medium';
     font-weight: bold;
 }
@@ -19,7 +18,7 @@
     height: 100vh;
     background-color: black;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 .background-container::before {
     content: "";
@@ -103,4 +102,19 @@
 .vt-logo {
     width: 250px;
     height: 250px;
+}
+
+.errorMessage {
+    color: red;
+    margin-left: 3%;
+    text-align: center;
+    margin-right: 2%;
+    font-size: 12px;
+    margin-top: 10px;
+    font-family: 'Yu Gothic Medium';
+    font-weight: bold;
+}
+
+.error {
+    border: 5px solid red;
 }

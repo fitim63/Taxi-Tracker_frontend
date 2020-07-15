@@ -7,6 +7,7 @@ import reportReducer from "./getReportsReducer";
 const allReducers = combineReducers({
   form: formReducer,
   auth: authReducer,
+  error: errorReducer,
   err: errorReducer,
   reports: reportReducer,
 });
