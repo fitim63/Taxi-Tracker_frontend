@@ -11,7 +11,7 @@
     height: 100vh;
     background-color: black;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 .background-container::before {
     content: "";
@@ -65,6 +65,12 @@
     }
 }
 
+.justify-content{
+    justify-content: center;
+    align-items: flex-start;
+    padding-bottom: 130px;
+}
+
 @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
 @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -87,12 +93,11 @@
 .form-header {
     display: flex;
     flex: 1;
-    justify-content: space-evenly;
 }
 .register-text {
     flex: 0.7;
-    font-size: 27px;
-    margin-top: 100px;
+    font-size: 18px;
+    margin-top: 108px;
     font-weight: normal;
     color: white;
     align-self: center;
@@ -105,4 +110,20 @@
 .vt-logo {
     width: 250px;
     height: 250px;
+    margin-right: 20px;
+}
+
+.errorMessage {
+    color: red;
+    margin-left: 3%;
+    text-align: center;
+    margin-right: 2%;
+    font-size: 12px;
+    margin-top: 10px;
+    font-family: 'Yu Gothic Medium';
+    font-weight: bold;
+}
+
+.error {
+    border: 10px solid red;
 }

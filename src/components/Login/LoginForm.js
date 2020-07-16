@@ -1,32 +1,34 @@
 import React from "react";
 import { Field, reduxForm } from "redux-form";
 import CustomInput from "../CustomInput";
+import { validateLogin, warn } from "./ValidationServices";
 
-const LoginForm = (props) => {
-  const { handleSubmit, onSubmit } = props;
+let LoginForm = (props) => {
+  const { handleSubmit, onSubmit, submitting } = props;
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-      <fieldset>
-        <Field
-          type="text"
-          placeholder="Username"
-          name="username"
-          component={CustomInput}
-        />
-      </fieldset>
-      <fieldset>
-        <Field
-          type="password"
-          name="password"
-          placeholder="Password"
-          component={CustomInput}
-        />
-      </fieldset>
-      <button className="btn m-1 btn-success btn-block" type="submit">
-        Login
+      <Field
+        type="text"
+        placeholder="Username"
+        name="username"
+        component={CustomInput}
+      />
+      <Field
+        type="password"
+        name="password"
+        placeholder="Password"
+        component={CustomInput}
+      />
+      <button
+        className="btn m-1 btn-success btn-block"
+        type="submit"
+        disabled={submitting}
+      >
+        Submit
       </button>
     </form>
   );
 };
-
-export default reduxForm({ form: "login" })(LoginForm);
+export default reduxForm({ form: "login", validate: validateLogin, warn })(
+  LoginForm
+);

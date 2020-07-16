@@ -27,6 +27,7 @@ const Login = (props) => {
         password: formProps.password,
       })
     );
+    history.push("/home");
   };
 
   return (

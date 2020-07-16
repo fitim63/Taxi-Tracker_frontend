@@ -2,7 +2,7 @@ import * as React from "react";
 import { Image } from "react-bootstrap";
 import "./Register.css";
 import RegisterForm from "./RegisterForm";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { register } from "../../actions";
 import logo from "../../assets/vehicleTrackerLogo.png";
 import { useHistory } from "react-router-dom";
@@ -13,7 +13,6 @@ const Register = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const onSubmit = async (formProps) => {
-    console.log("Props: ", formProps);
     dispatch(
       await register({
         firstName: formProps.username,
@@ -25,9 +24,13 @@ const Register = () => {
     );
     history.push("/login");
   };
+
   return (
     <div className="row d-flex justify-content-center background-container">
-      <div className="col-md-3 align-self-center  login-form fadeInDown">
+      <div
+        style={{ marginTop: "0px" }}
+        className="col-md-3 align-self-center  login-form fadeInDown"
+      >
         <div className="form-header">
           <h2 className="register-text">
             Server Registration Form

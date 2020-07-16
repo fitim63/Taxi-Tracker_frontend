@@ -2,3 +2,37 @@
     height: 100vh;
 }
 
+.custom-style {
+    margin-right: 20px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+section.search-control {
+    border: 2px solid #5c635c;
+    border-radius: 2px;
+    font-size: 20px;
+    background-color: #f8f8f8;
+}
+
+input.search-input.search-control-input {
+    background-color: #f8f8f8;
+    color: black;
+    font-size: 15px;
+    font-family: 'Yu Gothic UI Semibold';
+}
+input.search-input.search-control-input::placeholder {
+    color: black;
+}
+
+
+input.search-input.search-control-input.placeholder {
+    background-color: black;
+}
+
+
+.custom-style .search-control-icon-button {
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}

@@ -1,13 +1,23 @@
 import React from "react";
 import { Form } from "react-bootstrap";
 
-const CustomInput = (field) => (
-  <Form.Control
-    className="m-1 text-center"
-    type={field.type}
-    placeholder={field.placeholder}
-    {...field.input}
-  />
+const CustomInput = ({
+  input,
+  placeholder,
+  type,
+  meta: { touched, error, warning },
+}) => (
+  <div className="text-center">
+    <Form.Control
+      className="m-1 text-center"
+      type={type}
+      placeholder={placeholder}
+      {...input}
+    />
+    {touched &&
+      ((error && <span className="text-warning  ">{error}</span>) ||
+        (warning && <span>{warning}</span>))}
+  </div>
 );
 
 export default CustomInput;
