@@ -3,9 +3,12 @@ import { Navbar, Nav, NavbarBrand, NavItem } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/vehicleTrackerLogo.png";
 import "../style.css";
+import {useHistory} from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
+
+  const history = useHistory()
   return (
     <div>
       <Navbar bg="bg navbar-custom" variant="dark" expand="lg">
@@ -42,6 +45,26 @@ const Header = () => {
               </Nav.Link>
             </NavItem>
           </Nav>
+          <Form inline>
+            <FormControl
+              type="text"
+              placeholder="Search.."
+              className="mr-sm-2"
+            />
+            <Button variant="outline-success" className='btn primary mr-3'>Search</Button>
+          </Form>
+          <NavItem>
+            <Button onClick={async ()=>{
+
+              await localStorage.removeItem("token");
+              await localStorage.clear();
+              history.push('/login');
+
+            }}>
+              LogOut
+            </Button>
+          </NavItem>
+
         </Navbar.Collapse>
       </Navbar>
     </div>

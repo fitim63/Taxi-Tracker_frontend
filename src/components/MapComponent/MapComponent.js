@@ -8,22 +8,25 @@ import Loader from "react-loader-spinner";
 import { ReactLeafletSearch } from "react-leaflet-search";
 
 function MapComponent() {
-  const [lat] = useState(52.505);
-  const [lng] = useState(-0.09);
+
+  const [lat] = useState(42.661080);
+  const [lng] = useState(21.163324);
+
   const [zoom] = useState(13);
   const [markersLat, setMarkerLat] = useState(52.505);
   const [markerLng, setMarkerLng] = useState(-0.09);
+  const [address, setAddress] = useState("");
   let position = [lat, lng];
   const [onClickData, setOnClickData] = useState({});
 
   const myIcon = L.icon({
-    iconUrl: require("../../assets/taxi.png"),
+    iconUrl: require('../../assets/taxi.png'),
     iconSize: [64, 64],
     iconAnchor: [32, 64],
     popupAnchor: [-3, -76],
     shadowUrl: null,
     shadowSize: null,
-    shadowAnchor: null,
+    shadowAnchor: null
   });
 
   const handleOnClick = (event) => {
