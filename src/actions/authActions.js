@@ -40,6 +40,7 @@ export const register = (server) => async (dispatch) => {
 
 export const login = (user) => async (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
+  localStorage.setItem("username", user.username);
   axios({
     method: "POST",
     url: "http://localhost:8080/login",
