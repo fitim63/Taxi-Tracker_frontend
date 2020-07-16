@@ -2,7 +2,6 @@ import React from "react";
 import { Navbar, Nav, NavbarBrand, NavItem, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from "../../assets/vehicleTrackerLogo.png";
-import "../style.css";
 import { useHistory } from "react-router-dom";
 import "./Header.css";
 
@@ -24,22 +23,30 @@ const Header = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
             <NavItem>
-              <Nav.Link as={Link} to="/home">
+              <Nav.Link className="font-weight-normal" as={Link} to="/home">
                 Home
               </Nav.Link>
             </NavItem>
             <NavItem>
-              <Nav.Link as={Link} to="/reports">
+              <Nav.Link className="font-weight-normal" as={Link} to="/reports">
                 Reports
               </Nav.Link>
             </NavItem>
             <NavItem>
-              <Nav.Link as={Link} to="/userDetails">
+              <Nav.Link
+                className="font-weight-normal"
+                as={Link}
+                to="/userDetails"
+              >
                 User Details
               </Nav.Link>
             </NavItem>
             <NavItem>
-              <Nav.Link as={Link} to="/vehicleAddDelete">
+              <Nav.Link
+                className="font-weight-normal"
+                as={Link}
+                to="/vehicleAddDelete"
+              >
                 Vehicle
               </Nav.Link>
             </NavItem>

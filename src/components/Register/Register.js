@@ -2,7 +2,7 @@ import * as React from "react";
 import { Image } from "react-bootstrap";
 import "./Register.css";
 import RegisterForm from "./RegisterForm";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { register } from "../../actions";
 import logo from "../../assets/vehicleTrackerLogo.png";
 import { useHistory } from "react-router-dom";

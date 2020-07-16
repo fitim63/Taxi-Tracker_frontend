@@ -5,7 +5,6 @@ import { Route } from "react-router-dom";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import Welcome from "./components/Welcome/Welcome";
 import Register from "./components/Register/Register";
-
 import UserDetails from "./components/UserDetails/UserDetails";
 import VehicleAddDelete from "./components/VehicleAddDelete/VehicleAddDelete";
 import Reports from "./components/Reports/Reports";

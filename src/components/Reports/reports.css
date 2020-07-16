@@ -1,9 +1,31 @@
-.table-list-custom{
-    display: flex;
-    margin-top: 20px;
+.reports-bg {
+    position: relative;
+    z-index: 1;
 }
-.col-9{
+.reports-bg:before {
+    content: "";
+    position: absolute;
     display: flex;
-    float: right;
-    margin-top: -192px;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    opacity: .2;
+    background: url("./../../assets/reports_image.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.col-3 {
+    margin-top: 0;
+}
+#page {
+    border-collapse: collapse;
+}
+
+/* And this to your table's `td` elements. */
+#page td {
+    padding: 0;
+    margin: 0;
 }

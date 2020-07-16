@@ -90,11 +90,9 @@ const renderHeader = (id) => {
 };
 
 const ReportsDataComponent = ({ reportData, type, reportStatusPending }) => {
-  console.log("Report Data: ", reportData);
-  console.log("Type: ", type);
   return (
     <div className="col-9">
-      <table className="table">
+      <table className="table" id="reports-table">
         <thead className="thead-dark">
           <tr>{renderHeader(type)}</tr>
         </thead>

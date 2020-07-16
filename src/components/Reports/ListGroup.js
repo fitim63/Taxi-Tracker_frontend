@@ -8,15 +8,15 @@ const ListGroup = ({
   onItemSelect,
 }) => {
   return (
-    <ul className="list-group">
+    <ul className="list-group text-left">
       {items.map((item) => (
         <button
           onClick={() => onItemSelect(item)}
           key={item[valueProperty]}
           className={
             item === selectedItem
-              ? "list-group-item list-group-item-action active"
-              : "list-group-item list-group-item-action"
+              ? "text-left list-group-item list-group-item-secondary active"
+              : "text-left list-group-item list-group-item-secondary"
           }
         >
           {item[textProperty]}

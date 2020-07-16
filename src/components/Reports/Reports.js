@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ListGroup from "./ListGroup";
 import Header from "../Header/Header";
+import "./reports.css";
 import { useSelector, useDispatch } from "react-redux";
 import ReportsDataComponent from "./ReportsDataComponent";
 import { getReportsAction } from "../../actions";
@@ -27,21 +28,23 @@ const Reports = () => {
   return (
     <div>
       <Header />
-      <div className="table-list-custom">
-        <div className="col-3">
-          <ListGroup
-            items={types}
-            selectedItem={selectedType}
-            onItemSelect={(type) => handleSelectedType(type)}
+      <div className="reports-bg">
+        <div>
+          <div className="col-3">
+            <ListGroup
+              items={types}
+              selectedItem={selectedType}
+              onItemSelect={(type) => handleSelectedType(type)}
+            />
+          </div>
+        </div>
+        <div>
+          <ReportsDataComponent
+            reportData={reports}
+            status={reportStatusPending}
+            type={selectedType === null ? 0 : selectedType.id}
           />
         </div>
-      </div>
-      <div>
-        <ReportsDataComponent
-          reportData={reports}
-          status={reportStatusPending}
-          type={selectedType === null ? 0 : selectedType.id}
-        />
       </div>
     </div>
   );
