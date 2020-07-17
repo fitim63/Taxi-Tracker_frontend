@@ -31,7 +31,6 @@ export const register = (server) => async (dispatch) => {
       });
     })
     .catch((err) => {
-      console.log("REGISTER_FAIL ERR: ", err);
       dispatch({
         type: REGISTER_FAIL,
       });

@@ -18,7 +18,6 @@ function registerNewServer(server) {
     data: server,
   })
     .then((response) => {
-      console.log(response);
       return response;
     })
     .catch((err) => {

@@ -38,7 +38,6 @@ function MapComponent() {
       method: "GET",
       url: `https://geocode.xyz/${markersLat},${markerLng}?geoit=json`,
     }).then((value) => {
-      console.log("DATA", value);
       if (value.data) {
         setOnClickData(value.data);
       }
